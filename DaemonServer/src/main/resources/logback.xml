@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+    <Encoding>UTF-8</Encoding>
+    <encoder>
+      <pattern>[%level] %d{yyyy-MM-dd HH:mm:ss} [%class:%line] - %m%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="F" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+    <!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy-->
+    <!--for further documentation-->
+    <Encoding>UTF-8</Encoding>
+    <File>${WORKDIR}/logs/logFile.log</File>
+    <encoder>
+      <pattern>[%level] %d{yyyy-MM-dd HH:mm:ss} [%class:%line] - %m%n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>INFO</level>
+    </filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${WORKDIR}/logs/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+  <root level="DEBUG">
+    <appender-ref ref="Console"/>
+    <appender-ref ref="F"/>
+  </root>
+</configuration>

@@ -15,10 +15,10 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <groupId>com.centit.support</groupId>
             <artifactId>centit-utils</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>commons-daemon</groupId>
@@ -28,4 +28,114 @@
         
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- JAR Plugin to configure JAR generation. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>.</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!-- 输出依赖包 <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> <executions> <execution> <id>copy-dependencies</id> <phase>prepare-package</phase> <goals> <goal>copy-dependencies</goal> </goals> <configuration>
+                <outputDirectory>${project.build.directory}/lib</outputDirectory> <overWriteReleases>false</overWriteReleases> <overWriteSnapshots>false</overWriteSnapshots> <overWriteIfNewer>true</overWriteIfNewer> </configuration> </execution> </executions> </plugin> -->
+            <!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jar-plugin</artifactId> <version>2.4</version> <configuration> <archive> <manifest> <addClasspath>true</addClasspath> <classpathPrefix>lib/</classpathPrefix> <mainClass>service.FileLogger</mainClass>
+                </manifest> </archive> </configuration> </plugin> -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <!-- assembly版本 -->
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>make-daemon-linux-zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>jsw-test</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <descriptors>
+                                <descriptor>src/main/assembly/daemon-linux-zip.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- id标识，唯一即可 -->
+                        <id>make-daemon-win-zip</id>
+                        <!-- 设置package阶段进行 -->
+                        <phase>package</phase>
+                        <goals>
+                            <!-- 只运行一次 -->
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 输出的最终名称，自动添加格式后缀（如zip），当前示例为jsw-test.zip -->
+                            <finalName>jsw-test</finalName>
+                            <!-- 配置是否添加id到名称中，若为true，当前示例中，则为jsw-test-zip.zip，false即不添加，只是jsw-test.zip； 若同时打多个包，则可设为true，分别添加id以作区分 -->
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <!-- 打包的输出目录，可自定义，${project.build.directory}为编译输出目录，即target目录 -->
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <descriptors>
+                                <!-- 使用的描述符，按此描述进行打包，此处配置一个zip.xml表示打zip包 -->
+                                <descriptor>src/main/assembly/daemon-win-zip.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <!-- 若要同时打多个包（如windows和linux不同系统的包），可配置多个execution，此处只打zip，因此配置一个 -->
+                    <execution>
+                        <!-- id标识，唯一即可 -->
+                        <id>make-wrapper-win-zip</id>
+                        <!-- 设置package阶段进行 -->
+                        <phase>package</phase>
+                        <goals>
+                            <!-- 只运行一次 -->
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 输出的最终名称，自动添加格式后缀（如zip），当前示例为jsw-test.zip -->
+                            <finalName>jsw-test</finalName>
+                            <!-- 配置是否添加id到名称中，若为true，当前示例中，则为jsw-test-zip.zip，false即不添加，只是jsw-test.zip； 若同时打多个包，则可设为true，分别添加id以作区分 -->
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <!-- 打包的输出目录，可自定义，${project.build.directory}为编译输出目录，即target目录 -->
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <descriptors>
+                                <!-- 使用的描述符，按此描述进行打包，此处配置一个zip.xml表示打zip包 -->
+                                <descriptor>src/main/assembly/wrapper-win-zip.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
