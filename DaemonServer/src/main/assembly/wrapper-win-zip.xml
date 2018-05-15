@@ -26,7 +26,7 @@
 		</fileSet>
 		<fileSet>
 			<!-- 此处是把wrapper文件全部输出到根目录下的wrapper目录-->
-			<directory>src/main/resources/window/wrappers</directory>
+			<directory>install/wrappers</directory>
 			<outputDirectory>/wrapper</outputDirectory>
 		</fileSet>
 	</fileSets>

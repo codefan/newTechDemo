@@ -25,7 +25,7 @@
 			<outputDirectory>/classes</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>src/main/resources/daemon</directory>
+			<directory>install/daemon</directory>
 			<includes>
 				<include>commons-daemon-1.1.0.jar</include>
 			</includes>
@@ -34,7 +34,7 @@
 
 		<fileSet>
 			<!-- 此处是把daemon文件全部输出到根目录下的install目录-->
-			<directory>src/main/resources/windows</directory>
+			<directory>install/windows</directory>
 			<outputDirectory>/bin</outputDirectory>
 		</fileSet>
 	</fileSets>

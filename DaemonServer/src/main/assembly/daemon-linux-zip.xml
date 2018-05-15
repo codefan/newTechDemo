@@ -19,7 +19,7 @@
 			<outputDirectory>/classes</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>src/main/resources/daemon</directory>
+			<directory>install/daemon</directory>
 			<includes>
 		        <include>commons-daemon-1.1.0.jar</include>
 		    </includes>
@@ -27,7 +27,7 @@
 		</fileSet>
 		<fileSet>
 			<!-- 此处是把daemon的脚本文件输出到根目录下的bin目录-->
-			<directory>src/main/resources/linux</directory>
+			<directory>install/linux</directory>
             <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
             <fileMode>0744</fileMode>
