@@ -14,17 +14,22 @@ public class DemoApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
-    private static DaemonProcess realProcess = new DaemonProcess(
-            (i) -> {
-                if(i % 10 ==0 ) {
-                    logger.info("Step : " + i);
-                }
-                try {
-                    Thread.sleep(300);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } );
+    private static DaemonProcess realProcess = new AbstractDaemonProcess(){
+        int i = 0;
+
+        @Override
+        public void doTaskOnce() {
+            if(i % 10 ==0 ) {
+                logger.info("Step : " + i);
+            }
+            i++;
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    };
 
 
     public static void main(String[] args) throws Exception {

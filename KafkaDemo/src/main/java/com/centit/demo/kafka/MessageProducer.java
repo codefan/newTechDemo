@@ -19,7 +19,7 @@ public class MessageProducer {
         this.config = config;
     }
 
-    public void start() throws Exception {
+    public void init() throws Exception {
         logger.info("starting");
         Properties properties = config.getProperties();
         properties.put(ProducerConfig.ACKS_CONFIG, "all");
@@ -38,7 +38,7 @@ public class MessageProducer {
         return producer.send(new ProducerRecord<>(config.getTopic(), msgKey, message));
     }
 
-    public void stop() throws Exception {
+    public void destory() throws Exception {
         logger.info("stopping");
         Producer<String, String> producer = this.producer;
         this.producer = null;

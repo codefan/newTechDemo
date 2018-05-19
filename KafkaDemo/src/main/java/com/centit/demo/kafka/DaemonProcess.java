@@ -13,46 +13,15 @@ import java.util.function.Consumer;
  * 参见文档
  * https://blog.csdn.net/lianjunzongsiling/article/details/52622864
  */
-public class DaemonProcess {
-    private static final Logger logger = LoggerFactory.getLogger(DaemonProcess.class);
+public interface DaemonProcess {
 
-    private ExecutorService executor;
+    void init();
 
-    private final AtomicBoolean running = new AtomicBoolean();
+    void start() throws Exception;
 
-    private CountDownLatch stopLatch;
+    void doTaskOnce();
 
-    private Consumer<Integer> realProcess;
+    void stop() throws Exception;
 
-    public DaemonProcess( Consumer<Integer> realProcess ) {
-        this.realProcess = realProcess;
-    }
-
-
-    public void start() throws Exception {
-        executor = Executors.newSingleThreadExecutor();
-        executor.submit(this::loop);
-        running.set(true);
-        stopLatch = new CountDownLatch(1);
-    }
-
-    private void loop() {
-
-        logger.info("started");
-        int i = 0;
-        do {
-            realProcess.accept(i++);
-         } while (running.get());
-
-        logger.info("closing process");
-        stopLatch.countDown();
-    }
-
-    public void stop() throws Exception {
-        logger.info("stopping");
-        running.set(false);
-        stopLatch.await();
-        executor.shutdown();
-        logger.info("stopped");
-    }
+    void destory();
 }

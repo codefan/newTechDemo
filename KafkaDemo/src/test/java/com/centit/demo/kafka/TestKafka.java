@@ -4,9 +4,9 @@ public class TestKafka {
 
     private static void testSendMessage()  throws Exception {
         MessageProducer producer = new MessageProducer(new KafkaConfig());
-        producer.start();
+        producer.init();
         producer.send("hello","Hello world!");
-        producer.stop();
+        producer.destory();
     }
 
     private static MessageConsumer consumer = new MessageConsumer(

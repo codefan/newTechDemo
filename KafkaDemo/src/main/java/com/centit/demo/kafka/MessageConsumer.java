@@ -21,16 +21,11 @@ import java.util.function.Consumer;
  * 参见文档
  * https://blog.csdn.net/lianjunzongsiling/article/details/52622864
  */
-public class MessageConsumer {
+public class MessageConsumer extends AbstractDaemonProcess {
     private static final Logger logger = LoggerFactory.getLogger(MessageConsumer.class);
 
     private final KafkaConfig config;
 
-    private ExecutorService executor;
-
-    private final AtomicBoolean running = new AtomicBoolean();
-
-    private CountDownLatch stopLatch;
 
     private KafkaConsumer<String, String> consumer;
 
@@ -42,15 +37,8 @@ public class MessageConsumer {
         this.realConsumer = realConsumer;
     }
 
-
-    public void start() throws Exception {
-        executor = Executors.newSingleThreadExecutor();
-        executor.submit(this::loop);
-        running.set(true);
-        stopLatch = new CountDownLatch(1);
-    }
-
-    private void loop() {
+    @Override
+    public void init() {
         logger.info("starting");
         Properties properties = config.getProperties();
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, config.getConsumerGroup());
@@ -64,29 +52,20 @@ public class MessageConsumer {
         toptics.add(config.getTopic());
         consumer.subscribe(toptics);
         logger.info("started");
-
-        do {
-            ConsumerRecords<String, String> records = consumer.poll(100);
-            for (ConsumerRecord<String, String> record : records) {
-                logger.debug("offset={}, key={}, value={}", record.offset(), record.key(), record.value());
-                DemoMessage message = new DemoMessage(record.value(), config.getTopic(), record.partition(), record.offset());
-                //业务处理
-                realConsumer.accept(message);
-                consumer.commitSync();
-
-            }
-        } while (running.get());
-
-        logger.info("closing consumer");
-        consumer.close();
-        stopLatch.countDown();
     }
 
-    public void stop() throws Exception {
-        logger.info("stopping");
-        running.set(false);
-        stopLatch.await();
-        executor.shutdown();
-        logger.info("stopped");
+    @Override
+    public void doTaskOnce(){
+        ConsumerRecords<String, String> records = consumer.poll(100);
+        for (ConsumerRecord<String, String> record : records) {
+            logger.debug("offset={}, key={}, value={}", record.offset(), record.key(), record.value());
+            DemoMessage message = new DemoMessage(record.value(), config.getTopic(), record.partition(), record.offset());
+            //业务处理
+            realConsumer.accept(message);
+
+            consumer.commitSync();
+        }
+
     }
+
 }
