@@ -58,10 +58,10 @@ case "$1" in
         fi
             ;;
     status)
-		ps -ef | grep jsvc
-		;;
+        ps -ef | grep jsvc
+        ;;
     *)
-	    echo "usage: service ${SERVICE_NAME} {start|stop|restart|status}" >&2
-	    exit 3
-	    ;;
+        echo "usage: service ${SERVICE_NAME} {start|stop|restart|status}" >&2
+        exit 3
+        ;;
 esac

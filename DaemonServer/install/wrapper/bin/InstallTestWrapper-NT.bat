@@ -22,8 +22,8 @@ rem The base name for the Wrapper binary.
 set _WRAPPER_BASE=wrapper
 
 rem The directory where the Wrapper binary (.exe) file is located. It can be
-rem  either an absolute or a relative path. If the path contains any special 
-rem  characters, please make sure to quote the variable. 
+rem  either an absolute or a relative path. If the path contains any special
+rem  characters, please make sure to quote the variable.
 set _WRAPPER_DIR=
 
 rem The name and location of the Wrapper configuration file. This will be used
@@ -36,7 +36,7 @@ rem  as the first parameter.
 rem set _WRAPPER_CONF_OVERRIDE=true
 
 rem _PASS_THROUGH tells the script to pass all parameters through to the JVM
-rem  as is.  
+rem  as is.
 rem  If _WRAPPER_CONF_OVERRIDE is specified then all parameters will be passed.
 rem  If not set then all parameters starting with the second will be passed.
 set _PASS_THROUGH=true
@@ -118,9 +118,9 @@ rem Start the Wrapper
 rem
 :startup
 if not [%_PASS_THROUGH%]==[true] (
-	if not [%1]==[] (
-		echo WARNING: Extra arguments will be ignored. Please check usage in the batch file.
-	)
+    if not [%1]==[] (
+        echo WARNING: Extra arguments will be ignored. Please check usage in the batch file.
+    )
 )
 
 rem Collect the application parameters
