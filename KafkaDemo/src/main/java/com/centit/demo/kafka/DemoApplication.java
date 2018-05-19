@@ -3,6 +3,7 @@ package com.centit.demo.kafka;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.BufferedReader;
@@ -26,9 +27,8 @@ public class DemoApplication {
 			} );
 
 
-
 	public static void main(String[] args) throws Exception {
-		//SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 
 		realProcess.start();
 
