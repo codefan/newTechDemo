@@ -13,4 +13,9 @@ fun main(vararg args: String) {
 
     val sumLambda: (Int, Int) -> Int = {x,y ->  x + y }
     println(sumLambda(1,2))  // 输出 3
+
+    val testLombok = TestLombok()
+    testLombok.numa = 12
+    testLombok.numb = 15
+    println(testLombok.sum())
 }
