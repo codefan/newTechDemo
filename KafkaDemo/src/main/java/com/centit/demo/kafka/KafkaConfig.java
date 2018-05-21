@@ -24,7 +24,7 @@ public class KafkaConfig {
 
         properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "PLAINTEXT");
 
-        properties.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        properties.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "codefanpc:9092");
         return properties;
     }
 

@@ -15,6 +15,8 @@ import java.util.function.Consumer;
  */
 public interface DaemonProcess {
 
+    AtomicBoolean running = new AtomicBoolean();
+
     void init();
 
     void start() throws Exception;

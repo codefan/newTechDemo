@@ -5,7 +5,7 @@ public class TestKafka {
     private static void testSendMessage()  throws Exception {
         MessageProducer producer = new MessageProducer(new KafkaConfig());
         producer.init();
-        producer.send("hello","Hello world!");
+        producer.send("hello","Hello world newewdsfas!");
         producer.destory();
     }
 
@@ -18,9 +18,12 @@ public class TestKafka {
     }
 
     public static void main(String [] args) throws Exception {
-        testRecvMessage();
+
+        testSendMessage();
+
+        /*testRecvMessage();
         int n = System.in.read();
         consumer.stop();
-        System.out.print(n);
+        System.out.print(n);*/
     }
 }
