@@ -38,7 +38,7 @@ public class TestAliKafka {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
 // 请求的最长等待时间
-        props.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 30 * 1000);
+        props.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 300 * 1000);
 // 构造 Producer 对象，注意，该对象是线程安全的，一般来说，一个进程内一个 Producer 对象即可；
 // 如果想提高性能，可以多构造几个对象，但不要太多，最好不要超过 5 个
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);

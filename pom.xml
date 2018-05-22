@@ -18,6 +18,7 @@
         <module>KafkaDemo</module>
         <module>DaemonServer</module>
         <module>TestJava10</module>
+      <module>TestWebCharacter</module>
     </modules>
     <packaging>pom</packaging>
 
