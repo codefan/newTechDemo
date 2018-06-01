@@ -16,7 +16,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/test")
-public class TestCaseController extends BaseController {
+public class ServerSentEventController extends BaseController {
 
 
     @GetMapping("/sayhello/{userName}")

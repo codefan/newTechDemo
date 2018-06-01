@@ -58,6 +58,9 @@ public abstract class AbstractDaemonProcess implements DaemonProcess {
 
     @Override
     public void destory() {
-
+        //doOtherJob();
     }
+
+
+    //public abstract void doOtherJob();
 }
