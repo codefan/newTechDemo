@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>hello world!</title>
+  </head>
+  <body>
+    <div id="app">
+      <span v-bind:title="title">
+      鼠标悬停几秒钟查看此处动态绑定的提示信息！
+      </span>
+      <p v-if="seen">现在你看到我了</p>
+      <p> {{message}} </p>
+      <button v-on:click="reverseMessage">逆转消息</button>
+
+      <ol>
+        <!--
+          现在我们为每个 todo-item 提供 todo 对象
+          todo 对象是变量，即其内容可以是动态的。
+          我们也需要为每个组件提供一个“key”，稍后再
+          作详细解释。
+        -->
+        <todo-item
+          v-for="item in groceryList"
+          v-bind:todo="item"
+          v-bind:key="item.id">
+        </todo-item>
+      </ol>
+
+    </div>
+    <script type="text/javascript" charset="utf-8" src="index.js"></script>
+  </body>
+</html>
