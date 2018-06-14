@@ -4,7 +4,7 @@ Vue.component('todo-item', {
   template: '<li>{{ todo.text }}</li>'
 });
 
-var app = new Vue({
+/*var app = */new Vue({
   el: '#app',
   data: {
     seen:true,
