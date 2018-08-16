@@ -56,11 +56,11 @@ public class TestLettuce {
         String [] keys = {"{stock}600000", "{stock}600001","{stock}600002","{stock}600003","{stock}600004","{stock}600005",
             "{stock}000001","{stock}000002","{stock}000003","{stock}000004","{stock}000005","{stock}000006"};
 
-        Object object = sync.eval(strScript, ScriptOutputType.MULTI, keys );
-        System.out.println(object);
+        /*Object object = sync.eval(strScript, ScriptOutputType.MULTI, keys );
+        System.out.println(object);*/
 
 
-        /*Map<Long, List<String>> map = new HashMap<>(10);
+        Map<Long, List<String>> map = new HashMap<>(10);
         for(String k : keys) {
             Long slot = sync.clusterKeyslot(k);
             if(map.containsKey(slot)) {
@@ -75,7 +75,7 @@ public class TestLettuce {
         for(Map.Entry<Long, List<String>> ent : map.entrySet()) {
             Object object = sync.eval(strScript, ScriptOutputType.MULTI, ent.getValue().toArray(new String[]{}));
             System.out.println(object);
-        }*/
+        }
         //connection.async().eval()
     }
 
