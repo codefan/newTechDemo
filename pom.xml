@@ -20,6 +20,7 @@
         <module>TestJava10</module>
       <module>TestWebCharacter</module>
       <module>TestRedis</module>
+      <module>TestGuava</module>
     </modules>
     <packaging>pom</packaging>
 
