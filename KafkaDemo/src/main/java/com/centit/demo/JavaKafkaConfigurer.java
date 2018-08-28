@@ -1,4 +1,6 @@
-package com.centit.demo.alikafka;
+package com.centit.demo;
+
+import com.centit.demo.alikafka.KafkaProducerDemo;
 
 import java.util.Properties;
 

@@ -1,5 +1,7 @@
 package com.centit.demo.kafka;
 
+import com.centit.demo.JavaKafkaConfigurer;
+
 public class TestKafka {
 
     private static void testSendMessage()  throws Exception {
@@ -18,7 +20,7 @@ public class TestKafka {
     }
 
     public static void main(String [] args) throws Exception {
-
+        JavaKafkaConfigurer.configureSasl();
         testSendMessage();
 
         /*testRecvMessage();

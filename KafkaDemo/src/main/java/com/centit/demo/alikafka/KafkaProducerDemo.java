@@ -1,5 +1,6 @@
 package com.centit.demo.alikafka;
 
+import com.centit.demo.JavaKafkaConfigurer;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
