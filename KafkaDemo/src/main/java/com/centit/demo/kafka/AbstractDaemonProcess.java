@@ -30,6 +30,7 @@ public abstract class AbstractDaemonProcess implements DaemonProcess {
 
     @Override
     public void start() throws Exception {
+
         executor = Executors.newSingleThreadExecutor();
         executor.submit(this::loop);
         running.set(true);

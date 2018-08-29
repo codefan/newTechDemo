@@ -24,8 +24,8 @@ public class KafkaConfig {
     private Properties buildDefaults() {
         Properties properties = new Properties();
 
-        properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");
-        properties.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
+        properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "PLAINTEXT");
+        //properties.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
 
         properties.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "jishuceshi6:9092");
         return properties;
