@@ -1,5 +1,6 @@
 package com.centit.demo.kafka;
 
+import com.centit.demo.JavaKafkaConfigurer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,34 +11,19 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 @SpringBootApplication
-public class DemoApplication {
+public class KafkaConsumerDemoApplication {
 
-    private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(KafkaConsumerDemoApplication.class);
 
-    private static DaemonProcess realProcess = new AbstractDaemonProcess(){
-        int i = 0;
-        @Override
-        public void init() {
-        }
-
-        @Override
-        public void doTaskOnce() {
-            if(i % 10 ==0 ) {
-                logger.info("Step : " + i);
-            }
-            i++;
-            try {
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    };
+    private static MessageConsumer realProcess = new MessageConsumer(
+        new KafkaConfig(),
+        (msg) -> System.out.println(msg.getMessage()));
 
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(DemoApplication.class, args);
-
+        JavaKafkaConfigurer.configureJavaSystemProps();
+        SpringApplication.run(KafkaConsumerDemoApplication.class, args);
+        realProcess.init();
         realProcess.start();
 
         try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {

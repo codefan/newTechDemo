@@ -26,12 +26,12 @@ public class TestKafka {
     }
 
     public static void main(String [] args) throws Exception {
-        JavaKafkaConfigurer.configureSasl();
-        //testSendMessage();
-        testRecvMessage();
+        JavaKafkaConfigurer.configureJavaSystemProps();
+        testSendMessage();
+        /*testRecvMessage();
         int n = System.in.read();
         System.out.println("Now stop : " + n);
-        consumer.stop();
+        consumer.stop();*/
         System.out.println("Done!");
     }
 }

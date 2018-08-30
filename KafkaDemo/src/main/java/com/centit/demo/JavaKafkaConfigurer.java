@@ -9,7 +9,7 @@ public class JavaKafkaConfigurer {
 
     private static Properties properties;
 
-    public static void configureSasl() {
+    public static void configureJavaSystemProps() {
         //如果用-D或者其它方式设置过，这里不再设置
         Properties props = getKafkaProperties();
         if(BooleanBaseOpt.castObjectToBoolean(props.getProperty("java.security.auth.enable"),false)) {
@@ -19,6 +19,7 @@ public class JavaKafkaConfigurer {
                 System.setProperty("java.security.auth.login.config", props.getProperty("java.security.auth.login.config"));
             }
         }
+        System.setProperty("log4j.configuration","file:/home/codefan/projects/framework/newTechDemo/KafkaDemo/src/main/resources/log4j.properties");
     }
 
     public synchronized static Properties getKafkaProperties() {

@@ -18,7 +18,7 @@ public class KafkaConsumerDemo {
 
     public static void main(String args[]) {
         //设置sasl文件的路径
-        JavaKafkaConfigurer.configureSasl();
+        JavaKafkaConfigurer.configureJavaSystemProps();
 
         //加载kafka.properties
         Properties kafkaProperties =  JavaKafkaConfigurer.getKafkaProperties();
