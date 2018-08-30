@@ -10,7 +10,7 @@ public class TestKafka {
     private static void testSendMessage()  throws Exception {
         MessageProducer producer = new MessageProducer(new KafkaConfig());
         producer.init();
-        Future<RecordMetadata> f = producer.send("hello","Hello world newewdsfas!");
+        Future<RecordMetadata> f = producer.send("hello","Hello world from test!");
         System.out.println(f.isDone());
         producer.destory();
     }
@@ -26,12 +26,12 @@ public class TestKafka {
     }
 
     public static void main(String [] args) throws Exception {
-        //JavaKafkaConfigurer.configureSasl();
+        JavaKafkaConfigurer.configureSasl();
         //testSendMessage();
         testRecvMessage();
         int n = System.in.read();
         System.out.println("Now stop : " + n);
-        //consumer.stop();
+        consumer.stop();
         System.out.println("Done!");
     }
 }

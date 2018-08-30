@@ -23,7 +23,7 @@ public class KafkaProducerDemo {
 
         Properties props = new Properties();
         //设置接入点，请通过控制台获取对应Topic的接入点
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getProperty("bootstrap.servers"));
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getProperty("kafka.bootstrap.servers"));
         //设置SSL根证书的路径，请记得将XXX修改为自己的路径
         //与sasl路径类似，该文件也不能被打包到jar中
         props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, kafkaProperties.getProperty("ssl.truststore.location"));
@@ -44,7 +44,7 @@ public class KafkaProducerDemo {
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(props);
 
         //构造一个Kafka消息
-        String topic = kafkaProperties.getProperty("topic"); //消息所属的Topic，请在控制台申请之后，填写在这里
+        String topic = kafkaProperties.getProperty("aliyun.kafka.topic"); //消息所属的Topic，请在控制台申请之后，填写在这里
         String value = "this is the message's value: hello world"; //消息的内容
 
         ProducerRecord<String, String> kafkaMessage =  new ProducerRecord<>(topic, value);

@@ -1,6 +1,7 @@
 package com.centit.demo;
 
 import com.centit.demo.alikafka.KafkaProducerDemo;
+import com.centit.support.algorithm.BooleanBaseOpt;
 
 import java.util.Properties;
 
@@ -10,10 +11,13 @@ public class JavaKafkaConfigurer {
 
     public static void configureSasl() {
         //如果用-D或者其它方式设置过，这里不再设置
-        if (null == System.getProperty("java.security.auth.login.config")) {
-            //请注意将XXX修改为自己的路径
-            //这个路径必须是一个文件系统可读的路径，不能被打包到jar中
-            System.setProperty("java.security.auth.login.config", getKafkaProperties().getProperty("java.security.auth.login.config"));
+        Properties props = getKafkaProperties();
+        if(BooleanBaseOpt.castObjectToBoolean(props.getProperty("java.security.auth.enable"),false)) {
+            if (null == System.getProperty("java.security.auth.login.config")) {
+                //请注意将XXX修改为自己的路径
+                //这个路径必须是一个文件系统可读的路径，不能被打包到jar中
+                System.setProperty("java.security.auth.login.config", props.getProperty("java.security.auth.login.config"));
+            }
         }
     }
 

@@ -16,6 +16,9 @@ public class DemoApplication {
 
     private static DaemonProcess realProcess = new AbstractDaemonProcess(){
         int i = 0;
+        @Override
+        public void init() {
+        }
 
         @Override
         public void doTaskOnce() {

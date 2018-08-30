@@ -24,13 +24,8 @@ public abstract class AbstractDaemonProcess implements DaemonProcess {
 
 
     @Override
-    public void init() {
-
-    }
-
-    @Override
     public void start() throws Exception {
-
+        //init();
         executor = Executors.newSingleThreadExecutor();
         executor.submit(this::loop);
         running.set(true);

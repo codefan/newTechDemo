@@ -25,7 +25,7 @@ public class KafkaConsumerDemo {
 
         Properties props = new Properties();
         //设置接入点，请通过控制台获取对应Topic的接入点
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getProperty("bootstrap.servers"));
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getProperty("kafka.bootstrap.servers"));
         //设置SSL根证书的路径，请记得将XXX修改为自己的路径
         //与sasl路径类似，该文件也不能被打包到jar中
         props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, kafkaProperties.getProperty("ssl.truststore.location"));
@@ -46,7 +46,7 @@ public class KafkaConsumerDemo {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         //当前消费实例所属的消费组，请在控制台申请之后填写
         //属于同一个组的消费实例，会负载消费消息
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getProperty("group.id"));
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getProperty("aliyun.kafka.group.id"));
         //构造消息对象，也即生成一个消费实例
         KafkaConsumer<String, String> consumer = new org.apache.kafka.clients.consumer.KafkaConsumer<String, String>(props);
         //设置消费组订阅的Topic，可以订阅多个
@@ -54,7 +54,7 @@ public class KafkaConsumerDemo {
         List<String> subscribedTopics =  new ArrayList<String>();
         //如果需要订阅多个Topic，则在这里add进去即可
         //每个Topic需要先在控制台进行创建
-        subscribedTopics.add(kafkaProperties.getProperty("topic"));
+        subscribedTopics.add(kafkaProperties.getProperty("aliyun.kafka.topic"));
         consumer.subscribe(subscribedTopics);
 
         //循环消费消息
