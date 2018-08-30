@@ -37,6 +37,7 @@ sudo yum makecache fast
 sudo yum -y install docker-ce
 
 #启动 Docker 后台服务
+systemctl enable docker.service
 systemctl enable docker && systemctl start docker
 #sudo systemctl start docker
 
@@ -49,8 +50,8 @@ docker run hello-world
 
 #生成密钥对
 ssh-keygen -t rsa
-#将公钥加入到客户机器的认证keys文件中
-cat ~/.ssh/id_rsa/pub >> ~/.ssh./authorized_keys
+#将公钥加入到客户机器的认证keys文件中 /etc/ssh/sshd_config : AuthorizedKeysFile
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 #----
 $ cat <<EOF | tee /etc/sysctl.d/k8s.conf
@@ -69,8 +70,6 @@ master:
 # https://www.kubernetes.org.cn/4256.html
 #
 
-
-
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 
 [kubernetes]
@@ -84,18 +83,27 @@ EOF
 
 # 安装
 yum install -y kubelet kubeadm kubectl ipvsadm
+yum install -y kubernetes-cni
 
 systemctl enable kubelet && systemctl start kubelet
 
-docker pull warrior/etcd-amd64:3.0
-docker tag warrior/etcd-amd64:3.0 gcr.io/google_containers/etcd-amd64:3.0
+# 配置转发相关参数，否则可能会出错
+cat <<EOF >  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+vm.swappiness=0
+EOF
 
-docker pull warrior/pause-amd64:3.0.17
-docker tag warrior/pause-amd64:3.0.17 gcr.io/google_containers/pause-amd64:3.0.17
+sysctl --system
 
-node:
 
-yum install -y docker kubelet kubeadm kubectl kubernetes-cni
+pull_k8s_images_from_aliyun.sh
 
-systemctl enable docker && systemctl start docker
+
 systemctl enable kubelet && systemctl start kubelet
+
+kubeadm init --kubernetes-version=1.11.0
+
+# master-5
+#  kubeadm join 192.168.134.5:6443 --token ymxs4l.7cdya573bany7r59
+# --discovery-token-ca-cert-hash sha256:fac85ad8f57904eb891907d9b0fd922e1c58147cb20b408c149253c1baebcffe
