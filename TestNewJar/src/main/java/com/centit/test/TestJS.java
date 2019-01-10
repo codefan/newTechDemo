@@ -58,6 +58,9 @@ public class TestJS {
     public static void javaObjFunc() {
         String script =
             "var MyJavaClass = Java.type('com.centit.test.TestJS');\n" +
+            "var obj = new MyJavaClass();\n" +
+            "obj.name = '杨淮生';\n" +
+            "obj.sayHello();\n" +
             "var result = MyJavaClass.testJavaFunc('John Doe');\n" +
             "print(result)";
         ScriptEngineManager sem = new ScriptEngineManager();
