@@ -15,12 +15,13 @@
     <artifactId>newTechDemo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>KafkaDemo</module>
-        <module>DaemonServer</module>
-        <module>TestJava10</module>
+      <module>KafkaDemo</module>
+      <module>DaemonServer</module>
+      <module>TestJava10</module>
       <module>TestWebCharacter</module>
       <module>TestRedis</module>
-      <module>TestGuava</module>
+      <module>TestNewJar</module>
+      <module>TestCocurrent</module>
     </modules>
     <packaging>pom</packaging>
 
