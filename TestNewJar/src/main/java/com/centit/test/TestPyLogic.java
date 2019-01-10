@@ -7,7 +7,7 @@ import org.python.util.PythonInterpreter;
 
 import java.util.*;
 
-public class TestJypthon {
+public class TestPyLogic {
     public static void main(String[] args) {
         Map<String, List<Map<String, Object>>> dataSet =TestDataSet.createDate();
         PythonInterpreter interpreter = new PythonInterpreter();
