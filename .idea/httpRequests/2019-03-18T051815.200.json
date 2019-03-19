@@ -1,0 +1,9 @@
+{
+  "data": {
+    "authorById": {
+      "id": "author-1",
+      "firstName": "Joanne",
+      "lastName": "Rowling"
+    }
+  }
+}

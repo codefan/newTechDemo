@@ -23,6 +23,7 @@
       <module>TestNewJar</module>
       <module>TestCocurrent</module>
       <module>TestGraphQL</module>
+      <module>TestApplication</module>
     </modules>
     <packaging>pom</packaging>
 
