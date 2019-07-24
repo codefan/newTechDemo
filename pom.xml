@@ -24,6 +24,7 @@
       <module>TestCocurrent</module>
       <module>TestGraphQL</module>
       <module>TestApplication</module>
+      <module>TestNetty</module>
     </modules>
     <packaging>pom</packaging>
 
