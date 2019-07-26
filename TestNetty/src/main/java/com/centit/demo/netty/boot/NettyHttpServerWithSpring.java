@@ -1,5 +1,6 @@
 package com.centit.demo.netty.boot;
 
+import com.centit.demo.netty.http.HttpServerInitializer;
 import com.centit.demo.netty.http.SimpleHttpServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -11,6 +12,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import java.net.InetSocketAddress;
 
@@ -19,10 +22,13 @@ import java.net.InetSocketAddress;
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
-public class NettyHttpServer {
+public class NettyHttpServerWithSpring {
     private final int port;
 
-    public NettyHttpServer(int port) {
+    @Autowired
+    private DispatcherServlet servlet;
+
+    public NettyHttpServerWithSpring(int port) {
         this.port = port;
     }
 
@@ -37,7 +43,7 @@ public class NettyHttpServer {
         //设置端口值（如果端口参数的格式不正确，则抛出一个NumberFormatException）
         int port = (args.length >= 1) ? Integer.parseInt(args[0]):9999;
         //调用服务器的 start()方法
-        new NettyHttpServer(port).start();
+        new NettyHttpServerWithSpring(port).start();
     }
 
     public void start() throws Exception {
@@ -56,22 +62,12 @@ public class NettyHttpServer {
                 //(5) 添加一个EchoServerHandler到于Channel的 ChannelPipeline
                 //.childHandler(new HttpPipelineInitializer(false))
                 //.handler(new HttpPipelineInitializer(false))
-                .childHandler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    public void initChannel(SocketChannel ch) throws Exception {
-                        //EchoServerHandler 被标注为@Shareable，所以我们可以总是使用同样的实例
-                        //这里对于所有的客户端连接来说，都会使用同一个 EchoServerHandler，因为其被标注为@Sharable，
-                        //这将在后面的章节中讲到。
-                        ch.pipeline()
-                            .addLast("decoder", new HttpRequestDecoder())
-                            .addLast("encoder", new HttpResponseEncoder())
-                            .addLast(serverHandler);
-                    }
-                }).option(ChannelOption.SO_BACKLOG, 128)
+                .childHandler(new HttpServerInitializer(servlet))
+                .option(ChannelOption.SO_BACKLOG, 128)
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
             //(6) 异步地绑定服务器；调用 sync()方法阻塞等待直到绑定完成
             ChannelFuture f = b.bind().sync();
-            System.out.println(NettyHttpServer.class.getName() +
+            System.out.println(NettyHttpServerWithSpring.class.getName() +
                 " started and listening for connections on " + f.channel().localAddress());
             //(7) 获取 Channel 的CloseFuture，并且阻塞当前线程直到它完成
             f.channel().closeFuture().sync();

@@ -1,4 +1,4 @@
-package com.centit.demo.netty.boot;
+package com.centit.demo.netty.http;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler.Sharable;
@@ -13,7 +13,7 @@ import io.netty.handler.codec.http.*;
  */
 //标示一个ChannelHandler可以被多个 Channel 安全地共享
 @Sharable
-public class NettyHttpServerHandler extends ChannelInboundHandlerAdapter {
+public class SimpleHttpServerHandler extends ChannelInboundHandlerAdapter {
     public static void writeResponeToHttpClient(ChannelHandlerContext ctx, String content) throws Exception{
         FullHttpResponse response = new DefaultFullHttpResponse(
             HttpVersion.HTTP_1_1,
@@ -30,7 +30,7 @@ public class NettyHttpServerHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object request) throws Exception {
         if (request instanceof HttpRequest) {
             String responseContent = "您访问了" + ((HttpRequest) request).method().toString() +":" + ((HttpRequest) request).uri();
-            NettyHttpServerHandler.writeResponeToHttpClient(ctx, responseContent);
+            SimpleHttpServerHandler.writeResponeToHttpClient(ctx, responseContent);
         }
 
         /*else if (request instanceof HttpContent) {
