@@ -25,6 +25,7 @@
       <module>TestGraphQL</module>
       <module>TestApplication</module>
       <module>TestNetty</module>
+      <module>TestWebFlux</module>
     </modules>
     <packaging>pom</packaging>
 

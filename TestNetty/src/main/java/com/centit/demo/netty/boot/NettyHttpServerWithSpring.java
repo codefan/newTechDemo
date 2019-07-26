@@ -4,17 +4,15 @@ import com.centit.demo.netty.http.HttpServerInitializer;
 import com.centit.demo.netty.http.SimpleHttpServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.http.HttpRequestDecoder;
-import io.netty.handler.codec.http.HttpResponseEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.annotation.PostConstruct;
 import java.net.InetSocketAddress;
 
 /**
@@ -22,30 +20,18 @@ import java.net.InetSocketAddress;
  *
  * @author <a href="mailto:norman.maurer@gmail.com">Norman Maurer</a>
  */
+@Service
 public class NettyHttpServerWithSpring {
     private final int port;
 
     @Autowired
     private DispatcherServlet servlet;
 
-    public NettyHttpServerWithSpring(int port) {
-        this.port = port;
+    public NettyHttpServerWithSpring() {
+        this.port = 9999;
     }
 
-    public static void main(String[] args)
-        throws Exception {
-        /*if (args.length != 1) {
-            System.err.println("Usage: " + EchoServer.class.getSimpleName() +
-                " <port>"
-            );
-            return;
-        }*/
-        //设置端口值（如果端口参数的格式不正确，则抛出一个NumberFormatException）
-        int port = (args.length >= 1) ? Integer.parseInt(args[0]):9999;
-        //调用服务器的 start()方法
-        new NettyHttpServerWithSpring(port).start();
-    }
-
+    @PostConstruct
     public void start() throws Exception {
         final SimpleHttpServerHandler serverHandler = new SimpleHttpServerHandler();
         //(1) 创建EventLoopGroup
