@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
 public class CityRouter {
+
     @Bean
     public RouterFunction<ServerResponse> routeCity(
         @Autowired CityHandler cityHandler) {
