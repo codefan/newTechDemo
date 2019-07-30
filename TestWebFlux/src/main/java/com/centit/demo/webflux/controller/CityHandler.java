@@ -11,6 +11,7 @@ import reactor.core.publisher.Mono;
 public class CityHandler {
     public Mono<ServerResponse> helloCity(ServerRequest request) {
         return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
+            .header("Content-Type","text/plain; charset=utf-8")
             .body(BodyInserters.fromObject("Hello, " +
                 request.queryParam("name").orElse("unknown") + "!"));
     }
