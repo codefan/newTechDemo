@@ -13,7 +13,7 @@
   <groupId>com.centit.demo</groupId>
   <artifactId>TestWebFlux</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>demo</name>
+  <name>TestWebFlux</name>
   <description>Demo project for Spring Boot</description>
 
   <properties>
@@ -47,6 +47,7 @@
       <artifactId>reactor-test</artifactId>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <build>
