@@ -1,4 +1,4 @@
-package com.centit.demo.java10;
+package com.centit.test;
 
 public class TestLombok {
 

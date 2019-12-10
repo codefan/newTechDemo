@@ -9,23 +9,35 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>TestJava10</artifactId>
+    <artifactId>TestJava11</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
-        <jdk.version>10</jdk.version>
+        <jdk.version>11</jdk.version>
     </properties>
 
     <dependencies>
+      <dependency>
+        <groupId>org.graalvm.js</groupId>
+        <artifactId>js</artifactId>
+        <version>19.3.0</version>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.graalvm.js</groupId>
+        <artifactId>js-scriptengine</artifactId>
+        <version>19.3.0</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!--<dependency>
+        <groupId>org.graalvm.compiler</groupId>
+        <artifactId>compiler</artifactId>
+        <version>19.3.0</version>
+      </dependency>
+      -->
         <dependency>
             <groupId>com.centit.support</groupId>
             <artifactId>centit-utils</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.20</version>
         </dependency>
     </dependencies>
 
@@ -34,7 +46,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.8.0</version>
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>

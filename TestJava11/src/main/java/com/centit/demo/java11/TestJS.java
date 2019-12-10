@@ -1,14 +1,8 @@
-package com.centit.test;
+package com.centit.demo.java11;
 
 import com.alibaba.fastjson.JSON;
-import jdk.nashorn.api.scripting.ScriptObjectMirror;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import java.io.File;
-import java.util.Collection;
+import javax.script.*;
 
 public class TestJS {
     private String name;
@@ -18,13 +12,12 @@ public class TestJS {
     }
 
     public static void main(String[] args) {
-        javaObjFunc();
+        //javaObjFunc();
         callJavaObject();
         System.out.println(jsObjFunc());
         System.out.println(getArray());
         System.out.println(jsCalculate("a=1+2+3+(2*2)"));
         jsFunction();
-        jsVariables();
     }
 
     public static String testJavaFunc(Object name) {
@@ -35,11 +28,15 @@ public class TestJS {
 
     public static void callJavaObject() {
         ScriptEngineManager sem = new ScriptEngineManager();
-        ScriptEngine scriptEngine = sem.getEngineByName("js"); // "nashorn" 等价与 “js”, "JavaScript"
+        ScriptEngine scriptEngine = sem.getEngineByName("graal.js"); // "nashorn" 等价与 “js”, "JavaScript"
         String script =
             "function callJavaFunc(javaObj) {\n" +
-            "  javaObj.sayHello();\n" +
+                "  print(javaObj.name);\n" +
+                "  print(javaObj);\n" + // "  javaObj.sayHello();\n" +
             "}";
+        var bindings = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
+        //bindings.put("polyglot.js.allowAllAccess",true);
+        System.out.println(JSON.toJSONString(bindings));
         try {
             scriptEngine.eval(script);
             //scriptEngine.put("dataSet",dataSet);
@@ -56,15 +53,20 @@ public class TestJS {
     }
 
     public static void javaObjFunc() {
-        String script =
+        var script =
             "var MyJavaClass = Java.type('com.centit.test.TestJS');\n" +
             "var obj = new MyJavaClass();\n" +
             "obj.name = '杨淮生';\n" +
             "obj.sayHello();\n" +
             "var result = MyJavaClass.testJavaFunc('John Doe');\n" +
             "print(result)";
-        ScriptEngineManager sem = new ScriptEngineManager();
-        ScriptEngine scriptEngine = sem.getEngineByName("js");
+        var sem = new ScriptEngineManager();
+        var scriptEngine = sem.getEngineByName("graal.js");
+        //var bindings = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
+        //可以考虑这个，开启一切可开启的..
+        //bindings.put("polyglot.js.allowAllAccess",true);
+        //bindings.put("polyglot.js.allowHostAccess", true);
+        //bindings.put("polyglot.js.allowHostClassLookup", (Predicate<String>) s -> true);
         try {
             scriptEngine.eval(script);
         } catch (Exception e) {
@@ -80,7 +82,7 @@ public class TestJS {
         String script =
             "var obj={run:function(){return 'run method : return:\"abc'+this.next(name)+'\"';},next:function(str){return ' 我来至 next function '+str+')'}}";
         ScriptEngineManager sem = new ScriptEngineManager();
-        ScriptEngine scriptEngine = sem.getEngineByName("js");
+        ScriptEngine scriptEngine = sem.getEngineByName("graal.js");
         try {
             scriptEngine.put("name", "codefan");
             scriptEngine.eval(script);
@@ -93,7 +95,7 @@ public class TestJS {
         return null;
     }
 
-    public static Collection<Object> getArray() {
+    public static Object getArray() {
         ScriptEngineManager sem = new ScriptEngineManager();
         String script = "var obj={array:['test',true,1,1.0,2.11111]}";
 
@@ -104,7 +106,7 @@ public class TestJS {
           /*  Class<?> clazz = object2.getClass();
             Field denseField = clazz.getDeclaredField("size");
             denseField.setAccessible(true);*/
-            return ((ScriptObjectMirror) object2).values();
+            return object2;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,7 +116,7 @@ public class TestJS {
 
     public static Object jsCalculate(String script) {
         ScriptEngineManager manager = new ScriptEngineManager();
-        ScriptEngine engine = manager.getEngineByName("javascript");
+        ScriptEngine engine = manager.getEngineByName("graal.js");
         try {
             return engine.eval(script);
         } catch (ScriptException ex) {
@@ -128,7 +130,7 @@ public class TestJS {
      */
     public static void jsFunction() {
         ScriptEngineManager sem = new ScriptEngineManager();
-        ScriptEngine se = sem.getEngineByName("javascript");
+        ScriptEngine se = sem.getEngineByName("graal.js");
         try {
             String script = "function say(name){ return 'hello,'+name; }";
             se.eval(script);
@@ -140,21 +142,7 @@ public class TestJS {
         }
     }
 
-    /**
-     * JS中变量使用
-     */
-    public static void jsVariables() {
-        ScriptEngineManager sem = new ScriptEngineManager();
-        ScriptEngine engine = sem.getEngineByName("javascript");
-        File file = new File("TestNewJar/src/main/java/com/centit/test/optLogic.py");
-        engine.put("file", file);
-        try {
-            engine.eval("print('path:'+file.getAbsoluteFile())");
-        } catch (ScriptException e) {
-            e.printStackTrace();
-        }
 
-    }
 
     public String getName() {
         return name;
