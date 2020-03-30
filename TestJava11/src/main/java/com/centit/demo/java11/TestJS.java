@@ -2,7 +2,10 @@ package com.centit.demo.java11;
 
 import com.alibaba.fastjson.JSON;
 
-import javax.script.*;
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 public class TestJS {
     private String name;
@@ -31,12 +34,12 @@ public class TestJS {
         ScriptEngine scriptEngine = sem.getEngineByName("graal.js"); // "nashorn" 等价与 “js”, "JavaScript"
         String script =
             "function callJavaFunc(javaObj) {\n" +
-                "  print(javaObj.name);\n" +
-                "  print(javaObj);\n" + // "  javaObj.sayHello();\n" +
+                " print(javaObj.name);\n" +
+                " javaObj.sayHello();\n" + // "  print(javaObj);\n" + //
             "}";
-        var bindings = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
+        //var bindings = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
         //bindings.put("polyglot.js.allowAllAccess",true);
-        System.out.println(JSON.toJSONString(bindings));
+        //System.out.println(JSON.toJSONString(bindings));
         try {
             scriptEngine.eval(script);
             //scriptEngine.put("dataSet",dataSet);
