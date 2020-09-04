@@ -1,184 +1,356 @@
-GET http://localhost:8080/graphql?query={authorById(id:"author-1"){id firstName lastName}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-03-18T051815.200.json
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "740577738d9ea59df82762961e221e0cea6dbb6ebecc20f1e3e2857980f14599",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T021316.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-03-18T051811.200.json
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "3dce27538e61bdff90bb55bffd54062b0d7ee00f1094bdfd9b655e992e6b77a1",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T021140.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-03-18T051608.200.json
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "3dce27538e61bdff90bb55bffd54062b0d7ee00f1094bdfd9b655e992e6b77a1",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T021125.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-03-18T051604.200.json
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "oGKWxtz8",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T015147.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={authorById(id:"author-1"){id firstName lastName}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
+
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "2nsykc",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T015042.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-03-18T051357.200.json
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "pinBase64",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T015027.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={authorById(id:"author-1"){id firstName lastName}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-03-18T051341.200.json
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "oGKWxtz8",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T014742.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-03-18T050930.200.json
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "2nsykc",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T014656.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-03-18T050855.200.json
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "oGKWxtz8",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T014645.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-02-26T105645.200.json
+{
+  "loginUsage":0,
+  "userLoginType":1,
+  "userPin":"oGKWxtz8",
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T014635.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/authorizeduser/certcontent/list/authorized
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-02-26T105634.200.json
+{
+  "cert": {
+    "certContent": "MIIDrzCCA1WgAwIBAgILIOTwp8oLNvnkH00wCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAE5P6s/1FllkmqlKCRZMVBWTfkfWfaKNhRWoJeLQ9KAsdVSXBu9uy4j1H3/cNkfYvFcI1xkRPm/6qpyTTYud+mTaOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgM4MGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUHb5avS78i+X35FZcDnn+6RzRLyYwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0gAMEUCICkTud5zGWXLhY7F/ZCT0E0d/kGwopgRBJwH9HH9XOuIAiEAm9XBbnzGJ1ahyIzbewSwhDP/SqDnRACutoba6IgVjNo="
+  }
+}
+
+<> 2020-07-17T014338.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={bookById(id:"book-1"){id name pageCount author {firstName lastName}}}&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/cert/search
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+  "userUid": "hmh_chensheng"
+}
 
-<> 2019-02-26T105338.200.json
+<> 2020-07-17T014257.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/authorizeduser/certcontent/list/authorized
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+    "cert": {
+        "certContent": "MIIDsDCCA1WgAwIBAgILEJvm5fDJ0r0496EwCgYIKoEcz1UBg3UwYjELMAkGA1UEBhMCQ04xJDAiBgNVBAoMG05FVENBIENlcnRpZmljYXRlIEF1dGhvcml0eTEtMCsGA1UEAwwkTkVUQ0EgU00yIFRFU1QwMSBhbmQgRXZhbHVhdGlvbiBDQTAxMB4XDTIwMDcxNjA4MTI1MVoXDTIxMDcxNjA4MTI1MVowgYUxCzAJBgNVBAYTAkNOMRIwEAYDVQQIDAlHdWFuZ2RvbmcxMTAvBgNVBAcMKOW5v+S4nOecgeePoOa1t+W4gumHkea5vuWMuuaxiemdkui3rzLlj7cxHjAcBgNVBAoMFem7hOiMhea1t+i3qOa1t+mAmumBkzEPMA0GA1UEAwwG6ZmI55SfMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEntOFkvWFCtmbZ8MDTwlwF+H4Df83N5DR1IPueoSxy99/zVVnVZhWq6sC0Kr3RVUMQRsT2IXFfATf0QkFR6JRAKOCAcwwggHIMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgbAMGsGA1UdIARkMGIwYAYKKwYBBAGBkkgNCjBSMFAGCCsGAQUFBwIBFkRodHRwOi8vd3d3LmNuY2EubmV0L2NzL2tub3dsZWRnZS93aGl0ZXBhcGVyL2Nwcy9uZXRDQXRlc3RjZXJ0Y3BzLnBkZjAfBgNVHSMEGDAWgBQMe+ticwN1+oxKJAz2jzshZX4X6TAdBgNVHQ4EFgQUzAlPEM4GwPQmMpo0eMC1OusWlRMwNAYKKwYBBAGBkkgBDgQmDCQ0NzVhMWMxODU0ZjFhZDI0ZGIwNGUyYTBhZWUzZjI4Y0BTMDIwgcQGCCsGAQUFBwEBBIG3MIG0MDsGCCsGAQUFBzABhi9odHRwOi8vMTQuMTguMTU4LjE0Nzo2MTgwL29jc3Bjb25zb2xlL2NoZWNrLmRvIDA0BggrBgEFBQcwAYYoaHR0cDovLzE5Mi4xNjguMC42MS9vY3NwY29uc29sZS9jaGVjay5kbzA/BggrBgEFBQcwAYYzaHR0cDovL29jc3B0ZXN0LmNuY2EubmV0OjYxODAvb2NzcGNvbnNvbGUvY2hlY2suZG8gMAoGCCqBHM9VAYN1A0kAMEYCIQDET0u87JjuL3NxAYRW8t/9hDqdraPDKoWlrM/AFLrnYAIhAOyhWPTnZV4kcSg7+FSbmcoolHPlWRkCmR2sVUNMnBHm"
+    }
+}
 
-<> 2019-02-26T105239.200.json
+<> 2020-07-17T014244.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/cert/search
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+  "userUid": "hmh_chensheng"
+}
 
-<> 2019-02-26T105215.200.json
+<> 2020-07-17T013726.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/cert/search/2CKV1
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+    "userUid": "hmh_chensheng",
+    "projectUid": "P003220190311001"
+}
 
-<> 2019-02-26T105151.200.json
+<> 2020-07-17T013719.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/certcontent/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+  "loginUsage": 0,
+  "userLoginType": 1,
+  "userPin": "oGKWxtz8",
+  "projectUid": "P003220190311001"
+}
 
-<> 2019-02-26T104650.200.json
+<> 2020-07-16T053137.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }&totalPages=123
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/cert/search/2CKV1
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+    "userUid": "hmh_chensheng",
+    "projectUid": "P003220190311001"
+}
 
-<> 2019-02-26T104551.200.json
+<> 2020-07-16T050906.200.json
 
 ###
 
-GET http://localhost:8080/graphql?query={   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/cert/search
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+  "userUid": "hmh_chensheng"
+}
 
-<> 2019-02-26T104505.200.json
+<> 2020-07-16T050453.200.json
 
 ###
 
-GET http://localhost:8080/graphql
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+    "loginUsage": 1,
+    "userLoginType": 1,
+    "userPin": "oGKWxtz8",
+    "cert":{
+        "certSN": "证书序列号-大写",
+        "certThumbPrints": [
+            {
+                "algorithm": 16384,
+                "hash": "证书微缩图16进制编码-大写"
+            }
+        ]
+    }
+}
 
-<> 2019-02-26T104434.400.json
+<> 2020-07-16T050436.200.json
 
 ###
 
-POST http://localhost:8080/graphql
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-{   bookById(id: "book-1"){     id     name     pageCount     author {       firstName       lastName     }   } }
+{
+    "loginUsage": 1,
+    "userLoginType": 1,
+    "userPin": "oGKWxtz8",
+    "cert":{
+        "certSN": "证书序列号-大写",
+        "certThumbPrints":[
+            {
+                "algorithm": 16384,
+                "hash": "证书微缩图16进制编码-大写"
+            }
+        ]
+    }
+}
 
-<> 2019-02-26T104423.415.json
+<> 2020-07-16T050419.200.json
 
 ###
 
-GET http://localhost:8080/graphql
-Accept: */*
+POST https://124.71.15.76:61443/cloudkeyserver/user/dologin
+Content-Type: application/json
 Cache-Control: no-cache
 
-<> 2019-02-26T104319.400.json
+{
+    "loginUsage":1,
+    "userLoginType":1,
+    "userPin":"oGKWxtz8",
+    "cert":{
+        "certSN":"证书序列号-大写",
+        "certThumbPrints":[
+            {
+                "algorithm":16384,
+                "hash":"证书微缩图16进制编码-大写"
+            }
+        ]
+    }
+}
+
+<> 2020-07-16T050350.200.json
+
+###
+
+POST https://124.71.15.76:61443/cloudkeyserver/cert/search
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+  "userUid": "hmh_lzm"
+}
+
+<> 2020-07-16T040133.200.json
 
 ###
 

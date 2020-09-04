@@ -2,10 +2,8 @@ package com.centit.demo.java11;
 
 import com.alibaba.fastjson.JSON;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import javax.script.*;
+import java.util.function.Predicate;
 
 public class TestJS {
     private String name;
@@ -17,10 +15,10 @@ public class TestJS {
     public static void main(String[] args) {
         //javaObjFunc();
         callJavaObject();
-        System.out.println(jsObjFunc());
-        System.out.println(getArray());
-        System.out.println(jsCalculate("a=1+2+3+(2*2)"));
-        jsFunction();
+        //System.out.println(jsObjFunc());
+        //System.out.println(getArray());
+        //System.out.println(jsCalculate("a=1+2+3+(2*2)"));
+        //jsFunction();
     }
 
     public static String testJavaFunc(Object name) {
@@ -37,8 +35,10 @@ public class TestJS {
                 " print(javaObj.name);\n" +
                 " javaObj.sayHello();\n" + // "  print(javaObj);\n" + //
             "}";
-        //var bindings = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
+        var bindings = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
         //bindings.put("polyglot.js.allowAllAccess",true);
+        //bindings.put("polyglot.js.allowHostAccess", true);
+        bindings.put("polyglot.js.allowHostClassLookup", (Predicate<String>) s -> true);
         //System.out.println(JSON.toJSONString(bindings));
         try {
             scriptEngine.eval(script);
