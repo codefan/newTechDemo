@@ -3,7 +3,6 @@ package com.centit.demo.java11;
 import com.alibaba.fastjson.JSON;
 
 import javax.script.*;
-import java.util.function.Predicate;
 
 public class TestJS {
     private String name;
