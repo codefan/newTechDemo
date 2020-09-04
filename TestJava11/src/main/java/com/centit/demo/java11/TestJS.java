@@ -36,9 +36,9 @@ public class TestJS {
                 " javaObj.sayHello();\n" + // "  print(javaObj);\n" + //
             "}";
         var bindings = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
-        //bindings.put("polyglot.js.allowAllAccess",true);
+        bindings.put("polyglot.js.allowAllAccess",true);
         //bindings.put("polyglot.js.allowHostAccess", true);
-        bindings.put("polyglot.js.allowHostClassLookup", (Predicate<String>) s -> true);
+        //bindings.put("polyglot.js.allowHostClassLookup", (Predicate<String>) s -> true);
         //System.out.println(JSON.toJSONString(bindings));
         try {
             scriptEngine.eval(script);
