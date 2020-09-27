@@ -1,6 +1,7 @@
 package com.centit.kubernetes.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import com.centit.kubernetes.entity.Mysql;
 import com.centit.kubernetes.service.MysqlService;
@@ -26,10 +27,9 @@ public class MysqlController {
     MysqlService mysqlService;
 
     @PostMapping("")
-    public ResponseEntity<Mysql> createMysql() throws Exception {
+    public ResponseEntity<Mysql> createMysql(Mysql mysql) throws Exception {
         
-        V1Deployment v1Deployment = new V1Deployment();
-        Mysql mysql = mysqlService.createMysql(namespace, v1Deployment);
+        mysql = mysqlService.createMysql(namespace, mysql);
         
         return ResponseEntity.ok(mysql);
     }

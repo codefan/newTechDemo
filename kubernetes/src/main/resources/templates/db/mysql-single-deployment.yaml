@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${name}
+spec:
+  selector:
+    matchLabels:
+      name: mysql
+      version: ${version}
+      type: database
+  template:
+    metadata:
+      labels:
+        name: mysql
+        version: ${version}
+        type: database
+    spec:
+      nodeSelector:
+        type: database
+      containers:
+        - name: ${name}
+          image: ${image}
+          resources:
+            limits:
+              memory: ${memory}
+              cpu: ${cpu}
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: nfs
+              mountPath: /var/lib/mysql
+              subPath: database/${name}/data
+            - name: nfs
+              mountPath: /etc/mysql
+              subPath: database/${name}/conf
+            - name: nfs
+              mountPath: /logs
+              subPath: database/${name}/logs
+            - name: time
+              mountPath: /etc/localtime
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: ${MYSQL_ROOT_PASSWORD}
+          readinessProbe:
+            tcpSocket:
+              host: localhost
+              port: 3306
+          args:
+              - "--lower_case_table_names"
+      volumes:
+        - name: nfs
+          nfs:
+            path: /nfsdata
+            server: 192.168.128.71
+        - name: time
+          hostPath:
+            path: /etc/localtime

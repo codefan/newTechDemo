@@ -1,5 +1,8 @@
 package com.centit.kubernetes.constant;
 
+/**
+ * K8S常用API描述文件API版本与类型
+ */
 public enum KubeMetaEnum {
     
     DEPLOYMENT("apps/v1", "Deployment"),

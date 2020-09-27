@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.kubernetes.client.openapi.ApiException;
 import io.kubernetes.client.openapi.ApiResponse;
-import io.kubernetes.client.openapi.models.V1Service;
 import io.kubernetes.client.openapi.models.V1ServiceList;
 
 @RestController

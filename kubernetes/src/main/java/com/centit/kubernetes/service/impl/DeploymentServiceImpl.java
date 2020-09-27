@@ -35,13 +35,9 @@ public class DeploymentServiceImpl implements DeploymentService {
     }
 
     @Override
-    public ApiResponse<V1Deployment> getDeployment(String namespace, String name) {
-        ApiResponse<V1Deployment> apiResponse = null;
-        try {
-            apiResponse = appsV1Api.readNamespacedDeploymentWithHttpInfo(name, namespace, null, null, null);
-        } catch (ApiException e) {
-            logger.error("获取deployment失败", e);
-        }
+    public ApiResponse<V1Deployment> getDeployment(String namespace, String name) throws ApiException {
+        ApiResponse<V1Deployment> apiResponse = appsV1Api.readNamespacedDeploymentWithHttpInfo(name, namespace, null, null, null);
+
         return apiResponse;
     }
 

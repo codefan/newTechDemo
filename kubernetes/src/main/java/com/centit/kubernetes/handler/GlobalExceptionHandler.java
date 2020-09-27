@@ -1,5 +1,4 @@
-package com.centit.kubernetes.utils;
-
+package com.centit.kubernetes.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,20 +7,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-
 import io.kubernetes.client.openapi.ApiException;
+import io.kubernetes.client.openapi.JSON;
+import io.kubernetes.client.openapi.models.V1Status;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(ApiException.class)
-    public ResponseEntity<ApiException> ApiExceptionHandler(ApiException e){
+    public ResponseEntity<V1Status> ApiExceptionHandler(ApiException e){
 
-        logger.error("API调用异常", e);
+        logger.error("Kubernetes API调用异常", e);
 
-        ResponseEntity<ApiException> responseEntity = new ResponseEntity<>(e, HttpStatus.valueOf(e.getCode()));
+        V1Status v1Status = new JSON().setLenientOnJson(true).deserialize(e.getResponseBody(), V1Status.class);
+        
+        ResponseEntity<V1Status> responseEntity = new ResponseEntity<>(v1Status ,HttpStatus.valueOf(e.getCode()));
         return responseEntity;
     }
 }
