@@ -2,7 +2,7 @@ package com.centit.kubernetes.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "kubernetes", ignoreUnknownFields = true)
+@ConfigurationProperties(prefix = "kubernetes")
 public class KubernetesProperties {
     
     private String namespace;

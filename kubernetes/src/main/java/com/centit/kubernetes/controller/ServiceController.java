@@ -19,8 +19,8 @@ public class ServiceController {
     ServiceService serviceService;
 
     @GetMapping("")
-    public ApiResponse<V1ServiceList> listServices() throws ApiException {
-        ApiResponse<V1ServiceList> apiResponse = serviceService.listServices("test");
-        return apiResponse;
+    public V1ServiceList listServices(String namespace) throws ApiException {
+        V1ServiceList v1ServiceList = serviceService.listServices(namespace);
+        return v1ServiceList;
     }
 }

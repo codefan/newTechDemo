@@ -1,8 +1,13 @@
 server:
     port: 5000
 
+# spring:
+#     mvc:
+#         converters:
+#             preferred-json-mapper: gson
+
 kubernetes:
-    namespace: test     # 全局默认存储空间
+    namespace: test     # 全局默认命名空间
     config:
         file: .kube/config
         url: https://192.168.134.5:6443

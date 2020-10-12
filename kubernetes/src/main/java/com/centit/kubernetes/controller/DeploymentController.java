@@ -26,22 +26,22 @@ public class DeploymentController {
     DeploymentService deploymentService;
 
     @GetMapping("")
-    public ApiResponse<V1DeploymentList> listDeployment() throws ApiException {
-        ApiResponse<V1DeploymentList> apiResponse = deploymentService.listDeployment(namespace);
-        return apiResponse;
+    public V1DeploymentList listDeployment() throws ApiException {
+        V1DeploymentList v1DeploymentList = deploymentService.listDeployment(namespace);
+        return v1DeploymentList;
     }
 
     @GetMapping("/{name}")
-    public ApiResponse<V1Deployment> getDeployment(@PathVariable String name) throws ApiException {
+    public V1Deployment getDeployment(@PathVariable String name) throws ApiException {
 
-        ApiResponse<V1Deployment> apiResponse = deploymentService.getDeployment(namespace, name);
-        return apiResponse;
+        V1Deployment v1Deployment = deploymentService.getDeployment(namespace, name);
+        return v1Deployment;
     }
 
     @DeleteMapping("/{name}")
-    public ApiResponse<V1Status> deleteDeployment(@PathVariable String name) throws ApiException {
-        ApiResponse<V1Status> apiResponse = deploymentService.deleteDeployment(namespace, name);
-        return apiResponse;
+    public V1Status deleteDeployment(@PathVariable String name) throws ApiException {
+        V1Status v1Status = deploymentService.deleteDeployment(namespace, name);
+        return v1Status;
     }
 
     @PostMapping("")

@@ -3,6 +3,10 @@ kind: Service
 metadata:
   name: ${name}
   namespace: ${namespace}
+  labels:
+    name: mysql
+    version: ${version}
+    type: database
 spec:
   selector:
     name: mysql

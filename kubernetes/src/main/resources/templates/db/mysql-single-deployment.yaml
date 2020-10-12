@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ${name}
+  labels:
+    name: mysql
+    version: ${version}
+    type: database
 spec:
   selector:
     matchLabels:
@@ -15,15 +19,13 @@ spec:
         version: ${version}
         type: database
     spec:
-      nodeSelector:
-        type: database
       containers:
         - name: ${name}
           image: ${image}
           resources:
             limits:
-              memory: ${memory}
-              cpu: ${cpu}
+              memory: '${memory}'
+              cpu: '${cpu}'
           ports:
             - containerPort: 3306
           volumeMounts:
@@ -40,13 +42,18 @@ spec:
               mountPath: /etc/localtime
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: ${MYSQL_ROOT_PASSWORD}
+              value: ${mysqlRootPassword}
           readinessProbe:
             tcpSocket:
               host: localhost
               port: 3306
-          args:
-              - "--lower_case_table_names"
+          livenessProbe:
+            tcpSocket:
+              host: localhost
+              port: 3306
+          args: 
+            - "--lower-case-table-names=${lowerCaseTableNames}"
+            - "--character-set-server=${characterSetServer}"
       volumes:
         - name: nfs
           nfs:
