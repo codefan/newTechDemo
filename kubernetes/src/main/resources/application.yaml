@@ -6,6 +6,11 @@ server:
 #         converters:
 #             preferred-json-mapper: gson
 
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
 kubernetes:
     namespace: test     # 全局默认命名空间
     config:

@@ -1,9 +1,6 @@
 package com.centit.kubernetes.service.impl;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +22,7 @@ import org.codehaus.groovy.control.CompilationFailedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import io.kubernetes.client.openapi.ApiException;
@@ -81,9 +79,10 @@ public class MysqlServiceImpl implements MysqlService {
         String svcYaml = TemplateEngineUtils.binding(
                 getClass().getClassLoader().getResource("templates/db/mysql-single-svc.yaml").getFile(), params);
         V1Service v1Service = serviceService.createService(namespace, objectMapper.readValue(svcYaml, V1Service.class));
-
+        
         mysql.setPort(v1Service.getSpec().getPorts().get(0).getNodePort());
-
+        
+        
         return mysql;
     }
 
@@ -91,7 +90,16 @@ public class MysqlServiceImpl implements MysqlService {
     public Mysql deleteMysql(String name) throws Exception {
 
         deploymentService.deleteDeployment(namespace, name);
-        serviceService.deleteService(namespace, name);
+
+        try{
+            serviceService.deleteService(namespace, name);
+        }catch(ApiException e){
+            if(HttpStatus.NOT_FOUND.value() == e.getCode()){
+                logger.warn("数据库:" + name + "的控制器已被删除,但对应的service不存在");
+            }else{
+                throw e;
+            }
+        }
 
         Mysql mysql = new Mysql();
         mysql.setName(name);
@@ -142,6 +150,8 @@ public class MysqlServiceImpl implements MysqlService {
                     .getLimits().get("cpu").toSuffixedString());
             mysql.setMemory(v1Deployment.getSpec().getTemplate().getSpec().getContainers().get(0).getResources()
                     .getLimits().get("memory").toSuffixedString());
+            mysql.setGmtCreate(v1Deployment.getMetadata().getCreationTimestamp().toDate());
+            mysql.setVersion(v1Deployment.getMetadata().getLabels().get("version"));
             mysqls.add(mysql);
         }
 
