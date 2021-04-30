@@ -12,7 +12,8 @@ spring:
             client-id: 100001
             client-secret: 100001abcdefg
             authorization-grant-type: authorization_code
-            redirect-uri: http://codefanpc:10012/login/oauth2/code/centcas
+            redirect-uri: http://localhost:10012/login/oauth2/code/centcas
+            redirect-uri-template: http://localhost:10012/login/oauth2/code/centcas
             provider: centcas
             scope: read:user
         provider:

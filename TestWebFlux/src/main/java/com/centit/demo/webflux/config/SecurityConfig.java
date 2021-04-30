@@ -6,6 +6,7 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -18,15 +19,17 @@ public class SecurityConfig {
 
     @Bean
     SecurityWebFilterChain configure(ServerHttpSecurity http) {
+
         http
             .authorizeExchange(exchanges ->
                 exchanges
-                    .pathMatchers("/","/login** ","/hello/**").permitAll()
+                    .pathMatchers("/","/login** ","/oauth2/**","/hello/**").permitAll()
                     .anyExchange().authenticated()
             )
             .oauth2Login(withDefaults())
             .formLogin(withDefaults())
-            .oauth2Client(withDefaults());
+            .oauth2Client(withDefaults())
+            .csrf().disable();
         return http.build();
     }
 

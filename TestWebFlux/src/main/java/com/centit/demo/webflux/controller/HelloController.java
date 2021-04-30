@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    @GetMapping("/say/{ownerId}")
+    @GetMapping("/api/say/{ownerId}")
     @ResponseBody
     public String findPet(@PathVariable String ownerId) {
 
